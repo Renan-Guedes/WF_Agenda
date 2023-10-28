@@ -73,6 +73,7 @@
     </Content>
     <Content Include="contatos.aspx" />
     <Content Include="index.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="resources\agenda.png" />
     <Content Include="usuarios.aspx" />
     <Content Include="Web.config" />
@@ -91,6 +92,13 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>

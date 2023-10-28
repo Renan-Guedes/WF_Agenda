@@ -2,11 +2,30 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <p>
+        <asp:Label ID="Label3" runat="server" Font-Bold="True" Font-Size="Large" Text="Inserir Novo Contato"></asp:Label>
+    </p>
+    <p>
+        <asp:Label ID="Label1" runat="server" Text="Nome"></asp:Label>
+    </p>
+    <p>
+        <asp:TextBox ID="txtNome" runat="server" Width="328px"></asp:TextBox>
+    </p>
+    <p>
+        <asp:Label ID="Label2" runat="server" Text="Email"></asp:Label>
+    </p>
+    <asp:TextBox ID="txtEmail" runat="server" Width="328px"></asp:TextBox>
+    <p>
+        <asp:Label ID="Label4" runat="server" Text="Telefone"></asp:Label>
+    </p>
+    <p>
+        <asp:TextBox ID="txtTelefone" runat="server" Width="328px"></asp:TextBox>
+    </p>
+    <asp:Button ID="btnInserir" runat="server" Text="Inserir" OnClick="btnInserir_Click" />
     <h2>Lista de Contatos</h2>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSourceContato" ForeColor="#333333" GridLines="None" Height="246px" Width="441px">
+    <asp:GridView ID="GridViewContato" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSourceContato" ForeColor="#333333" GridLines="None" Height="246px" Width="441px">
     <AlternatingRowStyle BackColor="White" />
     <Columns>
-        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" />
         <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
         <asp:BoundField DataField="nome" HeaderText="nome" SortExpression="nome" />
         <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />

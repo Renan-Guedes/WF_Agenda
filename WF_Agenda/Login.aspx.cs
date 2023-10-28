@@ -8,15 +8,18 @@ using System.Web.UI.WebControls;
 
 namespace WF_Agenda
 {
-    public partial class contatos : System.Web.UI.Page
+    public partial class Login : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        protected void btnInserir_Click(object sender, EventArgs e)
+        protected void btnEntrar_Click(object sender, EventArgs e)
         {
+            string email = txtEmail.Text;
+            string senha = txtSenha.Text;
+            
             // Capturar a string de conexão
             System.Configuration.Configuration rootWebConfig = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("/MyWebSiteRoot");
             System.Configuration.ConnectionStringSettings connString;
@@ -27,14 +30,20 @@ namespace WF_Agenda
             con.ConnectionString = connString.ToString();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
-            cmd.CommandText = "INSERT INTO Contato (nome, email, telefone) VALUES (@nome, @email, @telefone)";
-            cmd.Parameters.AddWithValue("nome", txtNome.Text);
-            cmd.Parameters.AddWithValue("email", txtEmail.Text);
-            cmd.Parameters.AddWithValue("telefone", txtTelefone.Text);
+            cmd.CommandText = "SELECT * FROM Usuario WHERE email = @email and senha = @senha";
+            cmd.Parameters.AddWithValue("email", email);
+            cmd.Parameters.AddWithValue("senha", senha);
             con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
-            GridViewContato.DataBind();
+            SqlDataReader registro = cmd.ExecuteReader();
+            if (registro.HasRows)
+            {
+                // Direciona para a página principal
+                Response.Redirect("~/index.aspx");
+            }
+            else
+            {
+                lblErro.Text = "E-mail e/ou senha incorretos!";
+            }
         }
     }
 }
