@@ -37,12 +37,17 @@ namespace WF_Agenda
             SqlDataReader registro = cmd.ExecuteReader();
             if (registro.HasRows)
             {
+                // Cookie
+                HttpCookie login = new HttpCookie("login", txtEmail.Text);
+                Response.Cookies.Add(login);
+               
                 // Direciona para a página principal
                 Response.Redirect("~/index.aspx");
             }
             else
             {
-                lblErro.Text = "E-mail e/ou senha incorretos!";
+                Response.Write("<script>alert('E-mail e/ou senha incorretos!')</script>");
+                //lblErro.Text = "E-mail e/ou senha incorretos!";
             }
         }
     }
